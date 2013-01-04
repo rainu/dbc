@@ -48,6 +48,7 @@ public class DBMap<K extends Serializable, V extends Serializable> extends Abstr
 	
 	protected final boolean debugMode;
 	protected final boolean dropIfExists;
+	protected boolean cacheSize;
 	
 	protected final MetadataManager metadataManager;
 	
@@ -56,6 +57,7 @@ public class DBMap<K extends Serializable, V extends Serializable> extends Abstr
 		
 		this.dropIfExists = dropIfExist;
 		this.debugMode = debugMode;
+		cacheSize(false);
 
 		this.metadataManager = initMetadataManager();
 		init();
@@ -364,6 +366,8 @@ public class DBMap<K extends Serializable, V extends Serializable> extends Abstr
 	
 	@Override
 	public int size() {
+		if(!cacheSize) return getSize();
+			
 		//Size() ist eine sehr häufig verwendete
 		//Methode. Jedesmal ein SQL-Statement ab-
 		//zusenden kostet unnötige Zeit. Da wir hier
@@ -565,5 +569,19 @@ public class DBMap<K extends Serializable, V extends Serializable> extends Abstr
 	@Override
 	public Set<java.util.Map.Entry<K, V>> entrySet() {
 		return new DBMapEntrySet<K, V>(this);
+	}
+	
+	/**
+	 * Legt fest, ob die Size (@see DBMap#size()) zwischengespeichert wird.
+	 * Sollte die Größe nicht zwischengespeichert werden, wird bei jedem size()-
+	 * Aufruf eine Datenbankabfrage ausgeführt! Man sollte die Größe zwischenspeichern,
+	 * wenn man sicherstellen kann, dass kein anderer Zugriff auf die zugrunde liegende
+	 * Datenbank stattfindet.
+	 * 
+	 * @param cacheSize True zwischenspeichert die Größe. Andernfals wird die Größe immer per
+	 * SQL-Statement erfragt.
+	 */
+	public void cacheSize(boolean cacheSize){
+		this.cacheSize = cacheSize;
 	}
 }

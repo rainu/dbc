@@ -109,11 +109,25 @@ public class DBMapBlackboxTest {
 		testPutAll(iMap, new HashMap<String, Integer>(){{
 			put("1", 13121989); put("2", 13041990); put("3", 13082010);
 		}});
+		
+		iMap = new DBMap<String, Integer>(INFO, null, DELETE_ON_EXIT);
+		iMap.cacheSize(true);
+		testSimpleUse(iMap, 13121989, 13082010);
+		testPutAll(iMap, new HashMap<String, Integer>(){{
+			put("1", 13121989); put("2", 13041990); put("3", 13082010);
+		}});
 	}
 	
 	@Test
 	public void testLongSimpleUse() {
 		DBMap<String, Long> lMap = new DBMap<String, Long>(INFO, null, DELETE_ON_EXIT);
+		testSimpleUse(lMap, 13121989L, 13082010L);
+		testPutAll(lMap, new HashMap<String, Long>(){{
+			put("1", 13121989L); put("2", 13041990L); put("3", 13082010L);
+		}});
+		
+		lMap = new DBMap<String, Long>(INFO, null, DELETE_ON_EXIT);
+		lMap.cacheSize(true);
 		testSimpleUse(lMap, 13121989L, 13082010L);
 		testPutAll(lMap, new HashMap<String, Long>(){{
 			put("1", 13121989L); put("2", 13041990L); put("3", 13082010L);
@@ -127,11 +141,25 @@ public class DBMapBlackboxTest {
 		testPutAll(fMap, new HashMap<String, Float>(){{
 			put("1", 13.121989f); put("2", 13.041990f); put("3", 13.082010f);
 		}});
+		
+		fMap = new DBMap<String, Float>(INFO, null, DELETE_ON_EXIT);
+		fMap.cacheSize(true);
+		testSimpleUse(fMap, 12.13f, 13.10f);
+		testPutAll(fMap, new HashMap<String, Float>(){{
+			put("1", 13.121989f); put("2", 13.041990f); put("3", 13.082010f);
+		}});
 	}
 	
 	@Test
 	public void testDoubleSimpleUse() {
 		DBMap<String, Double> dMap = new DBMap<String, Double>(INFO, null, DELETE_ON_EXIT);
+		testSimpleUse(dMap, 12.13d, 13.10d);
+		testPutAll(dMap, new HashMap<String, Double>(){{
+			put("1", 13.121989d); put("2", 13.041990d); put("3", 13.082010d);
+		}});
+		
+		dMap = new DBMap<String, Double>(INFO, null, DELETE_ON_EXIT);
+		dMap.cacheSize(true);
 		testSimpleUse(dMap, 12.13d, 13.10d);
 		testPutAll(dMap, new HashMap<String, Double>(){{
 			put("1", 13.121989d); put("2", 13.041990d); put("3", 13.082010d);
@@ -145,11 +173,25 @@ public class DBMapBlackboxTest {
 		testPutAll(bMap, new HashMap<String, Byte>(){{
 			put("1", (byte)89); put("2", (byte)90); put("3", (byte)10);
 		}});
+		
+		bMap = new DBMap<String, Byte>(INFO, null, DELETE_ON_EXIT);
+		bMap.cacheSize(true);
+		testSimpleUse(bMap, (byte)13, (byte)12);
+		testPutAll(bMap, new HashMap<String, Byte>(){{
+			put("1", (byte)89); put("2", (byte)90); put("3", (byte)10);
+		}});
 	}
 	
 	@Test
 	public void testCharSimpleUse() {
 		DBMap<String, Character> cMap = new DBMap<String, Character>(INFO, null, DELETE_ON_EXIT);
+		testSimpleUse(cMap, '\u03FA', '\u03FB');
+		testPutAll(cMap, new HashMap<String, Character>(){{
+			put("1", '\u04FA'); put("2", '\u05FA'); put("3", '\u06FA');
+		}});
+		
+		cMap = new DBMap<String, Character>(INFO, null, DELETE_ON_EXIT);
+		cMap.cacheSize(true);
 		testSimpleUse(cMap, '\u03FA', '\u03FB');
 		testPutAll(cMap, new HashMap<String, Character>(){{
 			put("1", '\u04FA'); put("2", '\u05FA'); put("3", '\u06FA');
@@ -163,6 +205,13 @@ public class DBMapBlackboxTest {
 		testPutAll(bMap, new HashMap<String, Boolean>(){{
 			put("1", true); put("2", false); put("3", true);
 		}});
+		
+		bMap = new DBMap<String, Boolean>(INFO, null, DELETE_ON_EXIT);
+		bMap.cacheSize(true);
+		testSimpleUse(bMap, true, false);
+		testPutAll(bMap, new HashMap<String, Boolean>(){{
+			put("1", true); put("2", false); put("3", true);
+		}});
 	}
 	
 	@Test
@@ -172,11 +221,27 @@ public class DBMapBlackboxTest {
 		testPutAll(sMap, new HashMap<String, String>(){{
 			put("1", "13121989"); put("2", "13041990"); put("3", "13082010");
 		}});
+		
+		sMap = new DBMap<String, String>(INFO, null, DELETE_ON_EXIT);
+		sMap.cacheSize(true);
+		testSimpleUse(sMap, "13121989", "13108010");
+		testPutAll(sMap, new HashMap<String, String>(){{
+			put("1", "13121989"); put("2", "13041990"); put("3", "13082010");
+		}});
 	}
 	
 	@Test
 	public void testObjectSimpleUse() {
 		DBMap<String, Serializable> oMap = new DBMap<String, Serializable>(INFO, null, DELETE_ON_EXIT, true);
+		testSimpleUse(oMap, new BigInteger("1312198900000000000"), new BigInteger("1310801000000000000"));
+		testPutAll(oMap, new HashMap<String, Serializable>(){{
+			put("1", new BigInteger("13121989")); 
+			put("2", new BigInteger("13041990")); 
+			put("3", new BigInteger("13082010"));
+		}});
+		
+		oMap = new DBMap<String, Serializable>(INFO, null, DELETE_ON_EXIT, true);
+		oMap.cacheSize(true);
 		testSimpleUse(oMap, new BigInteger("1312198900000000000"), new BigInteger("1310801000000000000"));
 		testPutAll(oMap, new HashMap<String, Serializable>(){{
 			put("1", new BigInteger("13121989")); 

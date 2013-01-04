@@ -1,5 +1,8 @@
 package de.rainu.lib.dbc;
 
+import org.junit.Ignore;
+
+@Ignore
 public class DBMapWhiteboxTest {
 
 	//TODO

@@ -12,7 +12,7 @@ import de.rainu.lib.dbc.DBMap;
 import de.rainu.lib.dbc.beans.ConnectionInfo;
 import de.rainu.lib.dbc.beans.DBMapEntry;
 
-public class DBBMapEntryBlackboxTest {
+public class DBMapEntryBlackboxTest {
 	private final static String DB_PATH = "/tmp/dbc";
 	
 	DBMap<Integer, String> backend;
