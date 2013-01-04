@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.rainu.lib</groupId>
   <artifactId>dbc</artifactId>
-  <version>1.0.1-SNAPSHOT</version>
+  <version>1.0.1</version>
   <name>Database-Collections</name>
   
 <!-- 
@@ -14,9 +14,7 @@
 			<password>TOP_SECRET</password>
 		</server>
 		
-		Zu beachten ist, dass die >id< GENAUSO lauten muss! Das Passwort des Benutzers muss entsprechend geändert werden! Schritt 2: Anschließend kann man mittel Maven-Befehl den Deploy-Vorgang starten: 
-		
-		mvn clean release:prepare release:perform
+		Zu beachten ist, dass die >id< GENAUSO lauten muss! Das Passwort des Benutzers muss entsprechend geändert werden! Schritt 2: Anschließend kann man mittel Maven-Befehl den Deploy-Vorgang starten: mvn clean release:prepare release:perform
 -->
   
 	<developers>
