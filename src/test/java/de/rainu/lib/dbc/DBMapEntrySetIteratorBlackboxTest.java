@@ -85,4 +85,15 @@ public class DBMapEntrySetIteratorBlackboxTest {
 		
 		assertTrue(backend.isEmpty());
 	}
+	
+	@Test
+	public void integrationTest(){
+		for(int i=0; i < 10000; i++){
+			backend.put(i, String.valueOf(i));
+		}
+		
+		for(Entry<Integer, String> e : backend.entrySet()){
+			System.out.println(e.getKey() + " " + e.getValue());
+		}
+	}
 }

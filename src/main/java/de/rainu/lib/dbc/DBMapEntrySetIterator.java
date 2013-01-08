@@ -83,6 +83,7 @@ public class DBMapEntrySetIterator <K extends Serializable, V extends Serializab
 		}
 
 		started = true;
+		cursor++;
 		
 		return new DBMapEntry<K, V>(
 				backend,
