@@ -92,8 +92,12 @@ public class DBMapEntrySetIteratorBlackboxTest {
 			backend.put(i, String.valueOf(i));
 		}
 		
-		for(Entry<Integer, String> e : backend.entrySet()){
-			System.out.println(e.getKey() + " " + e.getValue());
-		}
+		for(Entry<Integer, String> e : backend.entrySet()){}
+		
+		backend.clear();
+		backend.put(1, null);
+		backend.put(2, "2");
+		
+		for(Entry<Integer, String> e : backend.entrySet()){}
 	}
 }
