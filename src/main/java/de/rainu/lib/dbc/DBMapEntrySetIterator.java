@@ -104,6 +104,8 @@ public class DBMapEntrySetIterator <K extends Serializable, V extends Serializab
 	private V getCurrentValue(){
 		try{
 			Class<?> valueClass = extractValueClassFromSet();
+			if(valueClass == null) return null;
+			
 			return extractValueFromSet(valueClass);
 		}catch(Exception e){
 			throw new BackendException(
