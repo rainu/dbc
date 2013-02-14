@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -102,6 +103,12 @@ public class DBMapBlackboxTest {
 		assertTrue(expectedCount == map.size());
 	}
 	
+	private <T extends Serializable> void testIter(DBMap<String, T> map){
+		for(String key : map.keySet()){}
+		for(T value : map.values()){}
+		for(Entry<String, T> entry : map.entrySet()){}
+	}
+	
 	@Test
 	public void testIntegerSimpleUse() {
 		DBMap<String, Integer> iMap = new DBMap<String, Integer>(INFO, null, DELETE_ON_EXIT);
@@ -116,6 +123,7 @@ public class DBMapBlackboxTest {
 		testPutAll(iMap, new HashMap<String, Integer>(){{
 			put("1", 13121989); put("2", 13041990); put("3", 13082010);
 		}});
+		testIter(iMap);
 	}
 	
 	@Test
@@ -132,6 +140,7 @@ public class DBMapBlackboxTest {
 		testPutAll(lMap, new HashMap<String, Long>(){{
 			put("1", 13121989L); put("2", 13041990L); put("3", 13082010L);
 		}});
+		testIter(lMap);
 	}
 	
 	@Test
@@ -148,6 +157,7 @@ public class DBMapBlackboxTest {
 		testPutAll(fMap, new HashMap<String, Float>(){{
 			put("1", 13.121989f); put("2", 13.041990f); put("3", 13.082010f);
 		}});
+		testIter(fMap);
 	}
 	
 	@Test
@@ -164,6 +174,7 @@ public class DBMapBlackboxTest {
 		testPutAll(dMap, new HashMap<String, Double>(){{
 			put("1", 13.121989d); put("2", 13.041990d); put("3", 13.082010d);
 		}});
+		testIter(dMap);
 	}
 	
 	@Test
@@ -180,6 +191,7 @@ public class DBMapBlackboxTest {
 		testPutAll(bMap, new HashMap<String, Byte>(){{
 			put("1", (byte)89); put("2", (byte)90); put("3", (byte)10);
 		}});
+		testIter(bMap);
 	}
 	
 	@Test
@@ -196,6 +208,7 @@ public class DBMapBlackboxTest {
 		testPutAll(cMap, new HashMap<String, Character>(){{
 			put("1", '\u04FA'); put("2", '\u05FA'); put("3", '\u06FA');
 		}});
+		testIter(cMap);
 	}
 	
 	@Test
@@ -212,6 +225,7 @@ public class DBMapBlackboxTest {
 		testPutAll(bMap, new HashMap<String, Boolean>(){{
 			put("1", true); put("2", false); put("3", true);
 		}});
+		testIter(bMap);
 	}
 	
 	@Test
@@ -228,6 +242,7 @@ public class DBMapBlackboxTest {
 		testPutAll(sMap, new HashMap<String, String>(){{
 			put("1", "13121989"); put("2", "13041990"); put("3", "13082010");
 		}});
+		testIter(sMap);
 	}
 	
 	@Test
@@ -248,5 +263,6 @@ public class DBMapBlackboxTest {
 			put("2", new BigInteger("13041990")); 
 			put("3", new BigInteger("13082010"));
 		}});
+		testIter(oMap);
 	}
 }
