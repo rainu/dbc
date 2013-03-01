@@ -93,6 +93,7 @@ public class DBMapValueIterator<E extends Serializable> implements Iterator<E>,
 			throw new BackendException(
 					"Could not iterate to next.", e);
 		}
+		cursor++;
 		started = true;
 		
 		return getCurrentValue();
