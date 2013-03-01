@@ -82,4 +82,15 @@ public class DBMapValueIteratorBlackboxTest {
 		
 		assertTrue(backend.isEmpty());
 	}
+	
+	@Test
+	public void intTest(){
+		backend.put(1, "1");
+		backend.put(2, null);
+		backend.put(3, "3");
+		
+		for(String s : backend.values()){
+			//nur die iteration testen
+		}
+	}
 }

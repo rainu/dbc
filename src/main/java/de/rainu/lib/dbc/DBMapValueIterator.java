@@ -118,6 +118,8 @@ public class DBMapValueIterator<E extends Serializable> implements Iterator<E>,
 	}
 	
 	private E extractValueFromSet(Class<?> valueClass) throws Exception{
+		if(valueClass == null) return null;
+		
 		@SuppressWarnings("unchecked")
 		Interpreter<E> valueInterpreter = (Interpreter<E>)
 				InterpreterProvider.getInstance()
