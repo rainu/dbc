@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import de.rainu.lib.dbc.ColumnNames;
 import de.rainu.lib.dbc.ConvertHelper;
 
-public class ObjectInterpreter implements Interpreter<Serializable>,
+public class ObjectInterpreter implements Interpreter<Object>,
 											ColumnNames{
 
 	@Override
@@ -23,13 +23,13 @@ public class ObjectInterpreter implements Interpreter<Serializable>,
 
 	@Override
 	public void setParameter(PreparedStatement stmt, 
-			int index, Serializable value) throws Exception{
+			int index, Object value) throws Exception{
 		
 		stmt.setBinaryStream(index, ConvertHelper.convertObjectToInputStream(value));
 	}
 
 	@Override
-	public Serializable getFromResultSet(
+	public Object getFromResultSet(
 			ResultSet result, int index) throws Exception {
 		
 		InputStream in = result.getBinaryStream(index);

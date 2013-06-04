@@ -21,9 +21,9 @@ import de.rainu.lib.dbc.exception.BackendException;
  * 
  * @author rainu
  *
- * @param <E>
+ * @param <E> Muss serialisierbar sein
  */
-public class DBSet<E extends Serializable> 
+public class DBSet<E> 
 	implements Set<E>, ColumnNames {
 	
 	private final DBMap<E, ?> backend;

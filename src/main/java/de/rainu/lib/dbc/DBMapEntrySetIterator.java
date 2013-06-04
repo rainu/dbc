@@ -1,6 +1,5 @@
 package de.rainu.lib.dbc;
 
-import java.io.Serializable;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,10 +17,10 @@ import de.rainu.lib.dbc.map.interpreter.InterpreterProvider;
  * 
  * @author rainu
  *
- * @param <K> Typ des Schlüssels
- * @param <V> Typ des Wertes
+ * @param <K> Typ des Schlüssels (Muss serialisierbar sein)
+ * @param <V> Typ des Wertes (Muss serialisierbar sein)
  */
-public class DBMapEntrySetIterator <K extends Serializable, V extends Serializable>
+public class DBMapEntrySetIterator <K, V>
 	implements Iterator<Entry<K, V>>, ColumnNames{
 	
 	private final DBMap<K, V> backend;

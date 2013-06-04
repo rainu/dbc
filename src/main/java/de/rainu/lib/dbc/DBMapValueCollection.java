@@ -18,9 +18,9 @@ import de.rainu.lib.dbc.exception.BackendException;
  * 
  * @author rainu
  *
- * @param <E> Typ des Wertes
+ * @param <E> Typ des Wertes (Muss serialisierbar sein)
  */
-public class DBMapValueCollection<E extends Serializable> 
+public class DBMapValueCollection<E> 
 	extends AbstractCollection<E>
 	implements Collection<E>, ColumnNames{
 

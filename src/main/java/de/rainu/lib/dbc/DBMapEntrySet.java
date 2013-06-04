@@ -1,6 +1,5 @@
 package de.rainu.lib.dbc;
 
-import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.AbstractSet;
 import java.util.Collection;
@@ -19,10 +18,10 @@ import de.rainu.lib.dbc.exception.BackendException;
  * 
  * @author rainu
  *
- * @param <K> Typ des Schlüssels
- * @param <V> Typ des Wertes
+ * @param <K> Typ des Schlüssels (Muss serialisierbar sein)
+ * @param <V> Typ des Wertes (Muss serialisierbar sein)
  */
-public class DBMapEntrySet<K extends Serializable, V extends Serializable>
+public class DBMapEntrySet<K, V>
 	extends AbstractSet<Entry<K, V>>
 	implements Set<Entry<K, V>>, ColumnNames {
 

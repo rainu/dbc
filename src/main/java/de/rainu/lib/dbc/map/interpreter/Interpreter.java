@@ -1,6 +1,5 @@
 package de.rainu.lib.dbc.map.interpreter;
 
-import java.io.Serializable;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -18,7 +17,7 @@ import java.sql.ResultSet;
  *
  * @param <T> der Typ für den der Interpreter zuständig ist.
  */
-public interface Interpreter<T extends Serializable> {
+public interface Interpreter<T> {
 	/**
 	 * Liefert den Spaltennamen in dem der Wert gespeichert
 	 * werden soll.
@@ -46,7 +45,7 @@ public interface Interpreter<T extends Serializable> {
 	void setParameter(
 			PreparedStatement stmt, 
 			int index,
-			Serializable value) throws Exception;
+			Object value) throws Exception;
 	
 	/**
 	 * Liest den Wert aus dem übergebenen ResultSets.

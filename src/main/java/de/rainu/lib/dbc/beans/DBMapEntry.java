@@ -1,6 +1,5 @@
 package de.rainu.lib.dbc.beans;
 
-import java.io.Serializable;
 import java.util.Map.Entry;
 
 import de.rainu.lib.dbc.DBMap;
@@ -11,10 +10,10 @@ import de.rainu.lib.dbc.DBMapEntrySet;
  * 
  * @author rainu
  *
- * @param <K> Typ des Schlüssels
- * @param <V> Typ des Wertes
+ * @param <K> Typ des Schlüssels (Muss serialisierbar sein)
+ * @param <V> Typ des Wertes (Muss serialisierbar sein)
  */
-public class DBMapEntry<K extends Serializable, V extends Serializable>
+public class DBMapEntry<K, V>
 	implements Entry<K, V> {
 
 	private final DBMap<K, V> backend;

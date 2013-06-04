@@ -30,10 +30,10 @@ import de.rainu.lib.dbc.meta.MetadataManager;
  * 
  * @author rainu
  *
- * @param <K> Typ des Schlüssels
- * @param <V> Typ des Wertes
+ * @param <K> Typ des Schlüssels (Muss serialisierbar sein)
+ * @param <V> Typ des Wertes (Muss serialisierbar sein)
  */
-public class DBMap<K extends Serializable, V extends Serializable> extends AbstractDBMap<K, V> implements ColumnNames{
+public class DBMap<K, V> extends AbstractDBMap<K, V> implements ColumnNames{
 	private static final Map<String, Integer> cachedSizes = new HashMap<String, Integer>();
 	
 	private PreparedStatement containsKeyStatement;

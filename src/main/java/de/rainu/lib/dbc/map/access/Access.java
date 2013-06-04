@@ -1,7 +1,5 @@
 package de.rainu.lib.dbc.map.access;
 
-import java.io.Serializable;
-
 import de.rainu.lib.dbc.ColumnNames;
 
 /**
@@ -20,7 +18,7 @@ public interface Access extends ColumnNames{
 	 * @return Wert in der Datenbank. Ist kein Eintrag vorhanden wird <b>null</b> geliefert.
 	 * @throws Exception Wenn ein Fehler auftrat.
 	 */
-	public Serializable get(Serializable key) throws Exception;
+	public Object get(Object key) throws Exception;
 	
 	/**
 	 * Fügt einen <b>neuen</b> Eintrag in die Datenbank hinzu.
@@ -28,7 +26,7 @@ public interface Access extends ColumnNames{
 	 * @param value Wert, welcher hinterlegt werden soll.
 	 * @throws Exception Wenn ein Fehler auftrat.
 	 */
-	public void add(Serializable key, Serializable value) throws Exception;
+	public void add(Object key, Object value) throws Exception;
 	
 	/**
 	 * Aktualisiert einen <b>bestehenden</b> Eintrag in der Datenbank.
@@ -36,5 +34,5 @@ public interface Access extends ColumnNames{
 	 * @param value Neuer Wert, der gespeichert werden soll.
 	 * @throws Exception Wenn ein Fehler auftrat.
 	 */
-	public void update(Serializable key, Serializable value) throws Exception;
+	public void update(Object key, Object value) throws Exception;
 }

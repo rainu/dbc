@@ -16,10 +16,10 @@ import de.rainu.lib.dbc.map.interpreter.InterpreterProvider;
  * 
  * @author rainu
  *
- * @param <E>
+ * @param <E> Muss serialisierbar sein
  */
-public class DBMapValueIterator<E extends Serializable> implements Iterator<E>,
-																ColumnNames{
+public class DBMapValueIterator<E> implements Iterator<E>,
+												ColumnNames{
 	private final DBMap<?, E> backend;
 	private final ResultSet set;
 	private final PreparedStatement removeStatement;

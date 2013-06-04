@@ -1,6 +1,5 @@
 package de.rainu.lib.dbc.map.interpreter;
 
-import java.io.Serializable;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,7 +21,7 @@ public class ByteInterpreter implements Interpreter<Byte>,
 
 	@Override
 	public void setParameter(PreparedStatement stmt, 
-			int index, Serializable value) throws SQLException{
+			int index, Object value) throws SQLException{
 		
 		stmt.setByte(index, (Byte)value);
 	}

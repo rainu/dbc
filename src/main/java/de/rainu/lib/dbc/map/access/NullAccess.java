@@ -1,6 +1,5 @@
 package de.rainu.lib.dbc.map.access;
 
-import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -57,13 +56,13 @@ public class NullAccess implements Access {
 	}
 	
 	@Override
-	public Serializable get(Serializable key) throws Exception {
+	public Object get(Object key) throws Exception {
 		//diese klasse liefert immer null
 		return null;
 	}
 
 	@Override
-	public void add(Serializable key, Serializable value) throws Exception {
+	public void add(Object key, Object value) throws Exception {
 		insertStatement.setInt(1, key.hashCode());
 		keyInterpreter.setParameter(insertStatement, 2, key);
 		insertStatement.setString(3, key.getClass().getName());
@@ -72,7 +71,7 @@ public class NullAccess implements Access {
 	}
 
 	@Override
-	public void update(Serializable key, Serializable value) throws Exception {
+	public void update(Object key, Object value) throws Exception {
 		updateStatement.setInt(1, key.hashCode());
 		updateStatement.setString(2, key.getClass().getName());
 		

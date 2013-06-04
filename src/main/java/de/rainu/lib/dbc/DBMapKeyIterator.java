@@ -1,6 +1,5 @@
 package de.rainu.lib.dbc;
 
-import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -17,10 +16,10 @@ import de.rainu.lib.dbc.map.interpreter.InterpreterProvider;
  * 
  * @author rainu
  *
- * @param <E>
+ * @param <E> Muss serialisierbar sein
  */
-public class DBMapKeyIterator<E extends Serializable> implements Iterator<E>,
-																ColumnNames{
+public class DBMapKeyIterator<E> implements Iterator<E>,
+											ColumnNames{
 	private final DBMap<E, ?> backend;
 	private Map<Class<?>, Integer> columnClassRelation = new HashMap<Class<?>, Integer>();
 	private final ResultSet view;

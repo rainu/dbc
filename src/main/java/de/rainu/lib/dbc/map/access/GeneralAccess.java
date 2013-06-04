@@ -1,6 +1,5 @@
 package de.rainu.lib.dbc.map.access;
 
-import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,12 +18,11 @@ public class GeneralAccess implements Access {
 	protected PreparedStatement selectStatement;
 	private final boolean debugMode;
 	
-	private final Interpreter<? extends Serializable> keyInterpreter;
-	private final Interpreter<? extends Serializable> valueInterpreter;
+	private final Interpreter<?> keyInterpreter;
+	private final Interpreter<?> valueInterpreter;
 	
 	public GeneralAccess(Connection connection, String tableName, boolean debugMode, 
-			Interpreter<? extends Serializable> keyProvider, 
-			Interpreter<? extends Serializable> valueProvider) throws SQLException{
+			Interpreter<?> keyProvider, Interpreter<?> valueProvider) throws SQLException{
 		
 		this.debugMode = debugMode;
 		this.keyInterpreter = keyProvider;
@@ -95,7 +93,7 @@ public class GeneralAccess implements Access {
 	}
 
 	@Override
-	public void add(Serializable key, Serializable value) throws Exception {
+	public void add(Object key, Object value) throws Exception {
 		insertStatement.setInt(1, key.hashCode());
 		keyInterpreter.setParameter(insertStatement, 2, key);
 		insertStatement.setString(3, key.getClass().getName());
@@ -112,7 +110,7 @@ public class GeneralAccess implements Access {
 	}
 	
 	@Override
-	public void update(Serializable key, Serializable value) throws Exception {
+	public void update(Object key, Object value) throws Exception {
 		valueInterpreter.setParameter(updateStatement, 1, value);
 		updateStatement.setInt(2, value.hashCode());
 		updateStatement.setString(3, value.getClass().getName());
@@ -130,7 +128,7 @@ public class GeneralAccess implements Access {
 	}
 	
 	@Override
-	public Serializable get(Serializable key) throws Exception {
+	public Object get(Object key) throws Exception {
 		selectStatement.setInt(1, key.hashCode());
 		selectStatement.setString(2, key.getClass().getName());
 		

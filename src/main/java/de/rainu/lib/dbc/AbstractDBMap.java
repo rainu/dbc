@@ -1,6 +1,5 @@
 package de.rainu.lib.dbc;
 
-import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -10,7 +9,7 @@ import java.util.Map;
 import de.rainu.lib.dbc.beans.ConnectionInfo;
 import de.rainu.lib.dbc.exception.BackendException;
 
-public abstract class AbstractDBMap<K, V extends Serializable> implements Map<K, V>{
+public abstract class AbstractDBMap<K, V> implements Map<K, V>{
 	private static final Map<Class<?>, Integer> RUNNING_INSTANCE_COUNT = new HashMap<Class<?>, Integer>();
 	protected final String tableName;
 	protected final Connection connection;

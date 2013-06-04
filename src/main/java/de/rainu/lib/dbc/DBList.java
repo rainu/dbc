@@ -1,6 +1,5 @@
 package de.rainu.lib.dbc;
 
-import java.io.Serializable;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,9 +17,9 @@ import de.rainu.lib.dbc.exception.BackendException;
  *
  * @author rainu
  *
- * @param <E>
+ * @param <E> Eine serialisierbare Klasse
  */
-public class DBList<E extends Serializable> extends AbstractList<E> implements List<E>, ColumnNames{
+public class DBList<E> extends AbstractList<E> implements List<E>, ColumnNames{
 	protected DBMap<Integer, E> backend;
 	private PreparedStatement indicesByValueAscStatement;
 	private PreparedStatement indicesByValueDescStatement;
