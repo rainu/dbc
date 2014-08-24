@@ -4,12 +4,26 @@ dbc
 
 Database-Container. Collection implementations that store data into a database.
 
-TODO
-
 License
 -------
 
 Database-Container is distributed under the [The MIT License](http://opensource.org/licenses/MIT).
+
+Maven Integration
+--------
+
+If you want to add ___Database-Container___ to your maven project, you can add the following dependency in your __pom.xml__:
+
+```xml
+<dependency>
+	<groupId>de.raysha.lib</groupId>
+	<artifactId>dbc</artifactId>
+	<version>2.0</version>
+</dependency>
+```
+
+
+TODO
 
 <b>How to build:</b>
 <ul>
