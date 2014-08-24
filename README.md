@@ -6,6 +6,11 @@ Database-Container. Collection implementations that store data into a database.
 
 TODO
 
+License
+-------
+
+Database-Container is distributed under the [The MIT License](http://opensource.org/licenses/MIT).
+
 <b>How to build:</b>
 <ul>
   <li>Install <b>maven</b> (i use version 2)</li>
